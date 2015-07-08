@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>WebSocket Test</title>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+    </head>
+    <body>
+        <h3>Enter a PID and click the button below to simulate tree download</h3>
+        <input id="pid" type="text" placeholder="Enter PID">
+        <button>Start Simulation</button>
+        <h4 id="downloadMessage"></h4>
+        <p id="percent"></p>
+
+        <script>
+            var url = window.location.href;
+            
+            $("button").click(function(){
+                var socket = io.connect(url, {'forceNew': true});
+
+                socket.emit('start', $("#pid").val());
+                $("#pid").val("");
+
+                socket.on('start response', function(data){
+                    $("#downloadMessage").text(data);
+                });
+
+                socket.on('percent', function(data){
+                    if (data == 100){
+                        $("#percent").text("Finished!");
+                        socket.disconnect();
+                    } else {
+                        $("#percent").text(data + "%");
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
