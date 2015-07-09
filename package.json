@@ -1,0 +1,24 @@
+{
+  "name": "relativefinder-websocket-test",
+  "version": "0.0.1",
+  "description": "This is a proof of concept test application for Relative Finder's tree download.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shampto3/relativefinder-websocket-test.git"
+  },
+  "author": "Scott Hampton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shampto3/relativefinder-websocket-test/issues"
+  },
+  "homepage": "https://github.com/shampto3/relativefinder-websocket-test#readme",
+  "dependencies": {
+    "express": "^4.13.1",
+    "socket.io": "^1.3.5"
+  }
+}
